@@ -74,7 +74,7 @@ const initializeSocket = require("./utils/socket.js");
 app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
 app.use(
   cors({
-    origin: "tinderfordeveloper.vercel.app",
+    origin: "https://tinderfordeveloper.vercel.app",
     // origin: "https://devtinder-tan.vercel.app", // Your frontend URL
     credentials: true, // Allow cookies
     methods: ["GET", "POST", "PUT", "DELETE"], // Optional but explicit
