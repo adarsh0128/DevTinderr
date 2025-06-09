@@ -73,7 +73,12 @@ const initializeSocket = require("./utils/socket.js");
 // Middlewares
 app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
 app.use(
-  cors({ origin: "https://devtinder-tan.vercel.app", credentials: true })
+  cors({
+    origin: "https://devtinder-tan.vercel.app", // Your frontend URL
+    credentials: true, // Allow cookies
+    methods: ["GET", "POST", "PUT", "DELETE"], // Optional but explicit
+    allowedHeaders: ["Content-Type", "Authorization"], // Explicit for headers
+  })
 );
 app.use(express.json());
 app.use(cookieParser());
