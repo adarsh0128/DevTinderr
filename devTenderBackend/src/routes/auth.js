@@ -34,10 +34,17 @@ authRouth.post("/signup", async (req, res) => {
     //   expires: new Date(Date.now() + 8 * 3600000), // 8 hours
     // });
 
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: process.env.NODE_ENV === "production", // required for HTTPS
+    //   sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+    //   expires: new Date(Date.now() + 8 * 3600000),
+    // });
+
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // required for HTTPS
-      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      secure: true,
+      sameSite: "None",
       expires: new Date(Date.now() + 8 * 3600000),
     });
 
@@ -64,10 +71,17 @@ authRouth.post("/login", async (req, res) => {
       const token = await user.getJWT();
 
       //add the token to cookie and send the respande back the user
+      // res.cookie("token", token, {
+      //   httpOnly: true,
+      //   secure: process.env.NODE_ENV === "production",
+      //   sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      //   expires: new Date(Date.now() + 8 * 3600000),
+      // });
+
       res.cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+        secure: true,
+        sameSite: "None",
         expires: new Date(Date.now() + 8 * 3600000),
       });
 
