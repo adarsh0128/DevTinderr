@@ -73,7 +73,7 @@ const About = () => {
         </div>
         <div className="flex justify-center mt-10">
           <a
-            href="https://drive.google.com/file/d/1keW3TO7YNsnITt0kUZUyEVg-NRZSACv7/view?usp=drivesdk"
+            href="https://drive.google.com/file/d/1gk33qnl8niq30sZqOzJU07kT6B3VRsMD/view"
             download
             className="download-button py-3 px-8 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transform hover:scale-110 transition duration-300"
           >
