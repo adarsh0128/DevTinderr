@@ -27,11 +27,18 @@ authRouth.post("/signup", async (req, res) => {
     const token = await savedUser.getJWT();
 
     //add the token to cookie and send the respande back the user
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: true, // Always true since you're on HTTPS via Render
+    //   sameSite: "None", // Required for cross-origin cookies (Vercel ↔ Render)
+    //   expires: new Date(Date.now() + 8 * 3600000), // 8 hours
+    // });
+
     res.cookie("token", token, {
       httpOnly: true,
-      secure: true, // Always true since you're on HTTPS via Render
-      sameSite: "None", // Required for cross-origin cookies (Vercel ↔ Render)
-      expires: new Date(Date.now() + 8 * 3600000), // 8 hours
+      secure: process.env.NODE_ENV === "production", // required for HTTPS
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      expires: new Date(Date.now() + 8 * 3600000),
     });
 
     res.json({ message: " data pass successfully", data: savedUser });
